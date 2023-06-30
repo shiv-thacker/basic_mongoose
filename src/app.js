@@ -33,14 +33,42 @@ const Playlist = new mongoose.model("Playlist", playlistSchema);
 
 const createDocument = async () => {
   try {
-    const reactPlaylist = new Playlist({
-      name: "Node js",
-      ctype: "Back End",
-      videos: 50,
+    const jsPlatlist = new Playlist({
+      name: "javascript",
+      ctype: "Front End",
+      videos: 150,
       author: "shivang thacker",
       active: true,
     });
-    const result = await reactPlaylist.save();
+    // to pass multiple data we just need to add one more object
+    const mongoPlaylist = new Playlist({
+      name: "mongoDB",
+      ctype: "Database",
+      videos: 10,
+      author: "shivang thacker",
+      active: true,
+    });
+    const mongoosePlaylist = new Playlist({
+      name: "mongoDB",
+      ctype: "Database",
+      videos: 13,
+      author: "shivang thacker",
+      active: true,
+    });
+    const expressPlaylist = new Playlist({
+      name: "expressjs",
+      ctype: "backend",
+      videos: 22,
+      author: "shivang thacker",
+      active: true,
+    });
+    // const result = await reactPlaylist.save(); to insert only one variable
+    const result = await Playlist.insertMany([
+      jsPlatlist,
+      mongoPlaylist,
+      mongoosePlaylist,
+      expressPlaylist,
+    ]);
     console.log(result);
   } catch (err) {
     console.log(err);
