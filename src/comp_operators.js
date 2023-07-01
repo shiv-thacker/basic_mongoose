@@ -28,10 +28,14 @@ const Playlist = new mongoose.model("Playlist", playlistSchema);
 //gte for greaterthan or equel to
 //as same as for lt & lte
 //eq for equal to
+//$in used in array $in :["v1","v2"] , if we write "backend","frontend" then it shows documents with backend & front end
+//$nin is opposite of in if we write "backend","frontend" then it shows documents without backend & front end
 
 const getDocument = async () => {
   try {
-    const result = await Playlist.find({ ctype: "backend" }).select({
+    const result = await Playlist.find({
+      ctype: { $nin: ["backend", "database"] },
+    }).select({
       name: 1,
     });
     console.log(result);
