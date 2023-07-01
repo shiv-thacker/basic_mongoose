@@ -5,6 +5,9 @@
 //minlength , maxlength, lowercase, uppercase
 //enum used to validate you variable, your input should be matching with one of it's values
 
+//custom navigation
+//we can give custom navigation with "validate" property, we have given in "videos" in this file
+
 const mongoose = require("mongoose");
 
 const mongoDB = "mongodb://0.0.0.0:27017/mongoosebasic";
@@ -28,7 +31,15 @@ const playlistSchema = new mongoose.Schema({
     enum: ["reactjs", "backend", "database"],
   },
   ctype: String,
-  videos: Number,
+  // custom validation
+  videos: {
+    type: Number,
+    validate(value) {
+      if (value < 0) {
+        throw new Error("videos can not be less then zero");
+      }
+    },
+  },
   author: String,
   active: Boolean,
   date: {
