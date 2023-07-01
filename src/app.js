@@ -35,22 +35,22 @@ const createDocument = async () => {
   try {
     const jsPlatlist = new Playlist({
       name: "javascript",
-      ctype: "Front End",
+      ctype: "frontend",
       videos: 150,
       author: "shivang thacker",
       active: true,
     });
     // to pass multiple data we just need to add one more object
     const mongoPlaylist = new Playlist({
-      name: "mongoDB",
-      ctype: "Database",
+      name: "mongodb",
+      ctype: "database",
       videos: 10,
       author: "shivang thacker",
       active: true,
     });
     const mongoosePlaylist = new Playlist({
-      name: "mongoDB",
-      ctype: "Database",
+      name: "mongodb",
+      ctype: "database",
       videos: 13,
       author: "shivang thacker",
       active: true,

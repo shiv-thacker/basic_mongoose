@@ -33,7 +33,7 @@ const Playlist = new mongoose.model("Playlist", playlistSchema);
 
 const getDocument = async () => {
   try {
-    const result = await Playlist.find({ ctype: "Front End" })
+    const result = await Playlist.find({ ctype: "frontend" })
       .select({
         name: 1,
       })
