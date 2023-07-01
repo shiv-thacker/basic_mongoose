@@ -8,9 +8,12 @@
 //custom navigation
 //we can give custom navigation with "validate" property, we have given in "videos" in this file
 
+//npm validator package, it provides default validation, const validator = require("validator");, like we can check "isEmail(value)"
+
 const mongoose = require("mongoose");
 
 const mongoDB = "mongodb://0.0.0.0:27017/mongoosebasic";
+const validator = require("validator");
 
 mongoose
   .connect(mongoDB)
@@ -23,7 +26,6 @@ const playlistSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
     lowercase: true,
     trim: true,
     minlength: [2, "minimum 2 letters required"],
@@ -37,6 +39,16 @@ const playlistSchema = new mongoose.Schema({
     validate(value) {
       if (value < 0) {
         throw new Error("videos can not be less then zero");
+      }
+    },
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    validate(value) {
+      if (!validator.isEmail(value)) {
+        throw new Error("Email is invalid");
       }
     },
   },
@@ -64,6 +76,7 @@ const createDocument = async () => {
       name: "reactjs",
       ctype: "database",
       videos: 10,
+      email: "shivang@gmail.co",
       author: "shivang thacker",
       active: true,
     });
