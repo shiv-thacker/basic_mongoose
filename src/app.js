@@ -40,7 +40,7 @@ const createDocument = async () => {
       author: "shivang thacker",
       active: true,
     });
-    // to pass multiple data we just need to add one more object
+    //to pass multiple data we just need to add one more object
     const mongoPlaylist = new Playlist({
       name: "mongodb",
       ctype: "database",
