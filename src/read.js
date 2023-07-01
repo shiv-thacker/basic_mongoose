@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-// const express = require("express");
-// const app = express();
 const mongoDB = "mongodb://0.0.0.0:27017/mongoosebasic";
 
 mongoose
@@ -47,7 +45,3 @@ const getDocument = async () => {
 };
 
 getDocument();
-
-// app.listen(8000, () => {
-//   console.log("on port 8000!!");
-// });
